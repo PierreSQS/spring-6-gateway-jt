@@ -1,4 +1,9 @@
 spring:
+  # ENABLE COLOR ON TERMINAL ENTRIES
+  output:
+    ansi:
+      enabled: ALWAYS
+  # JWT TOKEN ISSUER
   security:
     oauth2:
       resourceserver:
