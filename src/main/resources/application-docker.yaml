@@ -3,24 +3,24 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://auth-server-spring-6-jt:9000
+          issuer-uri: http://auth-server:9000
   cloud:
     gateway:
       routes:
         - id: spring-6-rest-mvc
-          uri: http://rest-mvc-spring-6-jt:8080
+          uri: http://rest-mvc-service:8080
           predicates:
             - Path=/api/v1/*/**
         - id: spring-6-reactive
-          uri: http://reactive-spring-6-jt:8080
+          uri: http://reactive-service:8080
           predicates:
             - Path=/api/v2/*
         - id: spring-6-reactive-mongo
-          uri: http://reactive-mongo-spring-6-jt:8080
+          uri: http://reactive-mongo-service:8080
           predicates:
             - Path=/api/v3/*
         - id: spring-6-auth-server
-          uri: http://auth-server-spring-6-jt:9000
+          uri: http://auth-server:9000
           predicates:
             - Path=/oauth2/*
 management:
