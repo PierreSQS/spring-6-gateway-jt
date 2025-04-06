@@ -1,9 +1,15 @@
 spring:
+  # ENABLE COLORED CONSOLE OUTPUT
+  output:
+    ansi:
+      enabled: always
+
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:9000
+
   cloud:
     gateway:
       routes:
