@@ -7,11 +7,10 @@ import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot, 06.04.2025.
  */
 @Configuration
 @EnableWebFluxSecurity
@@ -19,7 +18,7 @@ public class SpringSecConfig {
 
     @Bean
     @Order(1)
-    public SecurityWebFilterChain actuatorSecurityFilterChain(ServerHttpSecurity http) throws Exception {
+    public SecurityWebFilterChain actuatorSecurityFilterChain(ServerHttpSecurity http) {
         http.securityMatcher(EndpointRequest.toAnyEndpoint())
                 .authorizeExchange(authorize -> authorize.anyExchange().permitAll());
 
