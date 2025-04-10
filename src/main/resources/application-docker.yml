@@ -1,0 +1,44 @@
+spring:
+  # ENABLE COLORED CONSOLE OUTPUT
+  output:
+    ansi:
+      enabled: always
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://auth-server-jt:9000
+
+  cloud:
+    gateway:
+      routes:
+        - id: spring-6-rest-mvc
+          uri: http://rest-mvc-jt:8080
+          predicates:
+            - Path=/api/v1/*/**
+        - id: spring-6-auth-server
+          uri: http://auth-server-jt:9000
+          predicates:
+            - Path=/oauth2/**
+management:
+  endpoint:
+    health:
+      probes:
+        enabled: true
+  health:
+    readinessstate:
+      enabled: true
+    livenessstate:
+      enabled: true
+# ENABLE BELOW FOR TROUBLESHOOTING
+#      httpserver:
+#        wiretap: true
+#      httpclient:
+#        wiretap: true
+#logging:
+#  level:
+#    root: error
+#    reactor.netty: trace
+#    org.springframework.cloud.gateway: trace
+#    org.springframework.http.server.reactive: trace
